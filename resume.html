@@ -70,6 +70,15 @@
             font-size: 60px;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .profile-img:hover {
@@ -93,19 +102,20 @@
         .contact-info {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            font-size: 0.95rem;
+            gap: 12px;
+            font-size: 0.9rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
+            gap: 10px;
+            padding: 10px 14px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             backdrop-filter: blur(10px);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .contact-item:hover {
@@ -114,8 +124,9 @@
         }
 
         .contact-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.8;
+            min-width: 18px;
         }
 
         .main-content {
@@ -159,6 +170,34 @@
             width: 40px;
             height: 2px;
             background: #667eea;
+        }
+
+        .personal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .info-value {
+            font-weight: 400;
+            color: #2d3748;
+            text-align: right;
         }
 
         .summary {
@@ -391,6 +430,15 @@
             border: 1px solid #b2f5ea;
         }
 
+        .status-good {
+            color: #38a169;
+            font-weight: 500;
+        }
+
+        .status-neutral {
+            color: #718096;
+        }
+
         @media (max-width: 768px) {
             .header {
                 padding: 40px 30px;
@@ -426,6 +474,10 @@
             .item-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .personal-info-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -470,7 +522,9 @@
         <header class="header">
             <div class="header-content">
                 <div class="profile-section">
-                    <div class="profile-img">👨‍💻</div>
+                    <div class="profile-img">
+                        <img src="profile.jpg" alt="Profile Picture" />
+                    </div>
                 </div>
                 <div>
                     <h1 class="name">สิทธิพล ทองอิ่ม</h1>
@@ -486,7 +540,19 @@
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">📍</span>
-                            <span>vอุตรดิตถ์, ประเทศไทย</span>
+                            <span>อุตรดิตถ์, ประเทศไทย</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📘</span>
+                            <span>Facebook: Sittipol Thong-im</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💬</span>
+                            <span>Line: yaranaika...</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏠</span>
+                            <span>231/2 ม.3 ต.ในเมือง อ.พิชัย จ.อุตรดิตถ์</span>
                         </div>
                     </div>
                 </div>
@@ -497,8 +563,47 @@
             <div class="left-column">
                 <section class="section">
                     <h2 class="section-title">ข้อมูลส่วนตัว</h2>
+                    <div class="personal-info-grid">
+                        <div class="info-item">
+                            <span class="info-label">อายุ</span>
+                            <span class="info-value">23 ปี</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">เพศ</span>
+                            <span class="info-value">ชาย</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">สัญชาติ</span>
+                            <span class="info-value">ไทย</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">ศาสนา</span>
+                            <span class="info-value">พุทธ</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">ส่วนสูง</span>
+                            <span class="info-value">171 ซม.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">น้ำหนัก</span>
+                            <span class="info-value">110 กก.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">สถานภาพทหาร</span>
+                            <span class="info-value status-good">ผ่านแล้ว/ได้รับการยกเว้น</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">ใบขับขี่</span>
+                            <span class="info-value status-good">รถยนต์,รถจักรยานยนต์</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">ยานพาหนะส่วนตัว</span>
+                            <span class="info-value">รถยนต์,รถจักรยานยนต์</span>
+                        </div>
+                    </div>
                     <p class="summary">
-                        เว้นไว้ก่อน
+                        มีแฟนชื่อน้ำตาลครับ❤️ จุ๊บๆ❤️❤️ แฟนน่ารักมากครับ❤️❤️❤️ แฟนชอบแฟรงฟันและนอนเป็นชีวิตจิตใจ
+                    </p>
                 </section>
 
                 <section class="section">
@@ -514,14 +619,11 @@
                             <div class="item-duration">ธ.ค. 2024 - ปัจจุบัน</div>
                         </div>
                         <p class="item-description">
-                            รับผิดชอบการพัฒนาและดูแลระบบ E-commerce Platform ที่มีผู้ใช้งานมากกว่า 100,000 คน นำทีมพัฒนา 8 คน และปรับปรุงประสิทธิภาพระบบให้เร็วขึ้น 45%
+                            รับผิดชอบการรับผู้เข้ารับบริการและซักประวัติเพื่อบันทึกข้อมูลในระบบ JHCIS
                         </p>
                         <ul class="achievements">
-                            <li>พัฒนา Microservices Architecture ด้วย Node.js และ Docker ลดเวลาในการ Deploy 60%</li>
-                            <li>สร้างระบบ Real-time Notification ด้วย WebSocket และ Redis</li>
-                            <li>ออกแบบและพัฒนา Admin Dashboard ด้วย React และ TypeScript</li>
-                            <li>ปรับปรุง Database Performance ด้วย MongoDB Aggregation และ Indexing</li>
-                            <li>ติดตั้งและดูแลระบบ CI/CD ด้วย GitLab และ AWS EC2</li>
+                            <li>รับผู้เข้ารับบริการ</li>
+                            <li>ดูแลระบบสารสนเทศภายในองค์กร</li>
                         </ul>
                         <div class="tech-stack">
                             <span class="tech-item">JHCIS</span>
@@ -542,15 +644,16 @@
                             พัฒนาส่วนหน้าของเว็บไซต์และแอปพลิเคชันมือถือ ออกแบบ User Interface และ User Experience ร่วมงานกับทีม Marketing และ Product Manager
                         </p>
                         <ul class="achievements">
-                            <li>พัฒนา Progressive Web App (PWA) ด้วย Vue.js เพิ่ม User Engagement 35%</li>
-                            <li>ออกแบบ Design System และ Component Library สำหรับทีมพัฒนา</li>
-                            <li>สร้าง Landing Pages ที่เพิ่ม Conversion Rate 28%</li>
-                            <li>ปรับปรุง Performance Score จาก 65 เป็น 95 บน Google PageSpeed</li>
-                            <li>ดำเนินการ A/B Testing เพื่อปรับปรุง User Experience</li>
+                            <li>พัฒนาเว็บไซต์ด้วย WordPress / Elementor Page Builder / CSS HTML และ JavaScript</li>
+                            <li>สร้าง/ติดตั้ง Theme WordPress และลง Plugin</li>
+                            <li>ปรับปรุงประสิทธิภาพของเว็บไซต์ (Core Web Vitals และ Page speed)</li>
+                            <li>Customize Layout Design</li>
+                            <li>ทดสอบ ปรับแต่งและแก้ไขปัญหา</li>
                         </ul>
                         <div class="tech-stack">
                             <span class="tech-item">Wordpress</span>
                             <span class="tech-item">CSS</span>
+                            <span class="tech-item">HTML</span>
                             <span class="tech-item">Adobe Photoshop</span>
                             <span class="tech-item">Google Analytics</span>
                         </div>
@@ -580,30 +683,6 @@
                             <span class="tech-item">Java</span>
                         </div>
                     </div>
-
-                    <div class="project-item">
-                        <div class="item-header">
-                            <div>
-                                <div class="item-title">Smart Home Dashboard</div>
-                            </div>
-                            <div class="item-duration">2022</div>
-                        </div>
-                        <p class="item-description">
-                            ระบบควบคุมอุปกรณ์ในบ้านผ่านเว็บแอปพลิเคชัน พร้อมระบบแจ้งเตือนและสถิติการใช้พลังงาน
-                        </p>
-                        <ul class="achievements">
-                            <li>พัฒนา Dashboard ด้วย Next.js และ Chart.js</li>
-                            <li>สร้าง IoT Integration ด้วย MQTT Protocol</li>
-                            <li>ระบบแจ้งเตือนแบบ Real-time ด้วย Socket.io</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span class="tech-item">Next.js</span>
-                            <span class="tech-item">Socket.io</span>
-                            <span class="tech-item">MQTT</span>
-                            <span class="tech-item">Chart.js</span>
-                            <span class="tech-item">Arduino</span>
-                        </div>
-                    </div>
                 </section>
 
                 <section class="section">
@@ -616,7 +695,7 @@
                                 <div class="item-school">มหาวิทยาลัยราชภัฏอุตรดิตถ์</div>
                                 <div class="item-location">อุตรดิตถ์</div>
                             </div>
-                            <div class="item-duration">2015 - 2019<span class="gpa">เกรดเฉลี่ย 3.04</span></div>
+                            <div class="item-duration">2019 - 2024<span class="gpa">เกรดเฉลี่ย 3.04</span></div>
                         </div>
                         <p class="item-description">
                             เรียนรู้พื้นฐานการเขียนโปรแกรม, โครงสร้างข้อมูล, ฐานข้อมูล, และวิศวกรรมซอฟต์แวร์
@@ -691,112 +770,12 @@
                     </div>
                 </section>
 
-                <section class="section certifications">
-                    <h2 class="section-title">ใบรับรอง</h2>
-                    <div class="cert-item">
-                        <div class="cert-name">AWS Certified Solutions Architect</div>
-                        <div class="cert-issuer">Amazon Web Services</div>
-                        <div class="cert-date">มีนาคม 2023</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Google Cloud Professional Developer</div>
-                        <div class="cert-issuer">Google Cloud</div>
-                        <div class="cert-date">กันยายน 2022</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">MongoDB Certified Developer</div>
-                        <div class="cert-issuer">MongoDB University</div>
-                        <div class="cert-date">มิถุนายน 2022</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Microsoft Azure Fundamentals</div>
-                        <div class="cert-issuer">Microsoft</div>
-                        <div class="cert-date">กุมภาพันธ์ 2022</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Docker Certified Associate</div>
-                        <div class="cert-issuer">Docker Inc.</div>
-                        <div class="cert-date">ธันวาคม 2021</div>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h2 class="section-title">รางวัลและความสำเร็จ</h2>
-                    <div class="cert-item">
-                        <div class="cert-name">Best Innovation Award</div>
-                        <div class="cert-issuer">Thailand Developer Conference 2023</div>
-                        <div class="cert-date">พฤศจิกายน 2023</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Employee of the Year</div>
-                        <div class="cert-issuer">บริษัท เทคโนโลยีนวัตกรรม จำกัด</div>
-                        <div class="cert-date">ธันวาคม 2022</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Hackathon Winner</div>
-                        <div class="cert-issuer">Bangkok Fintech Hackathon</div>
-                        <div class="cert-date">สิงหาคม 2021</div>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h2 class="section-title">กิจกรรมและผลงาน</h2>
-                    <div class="cert-item">
-                        <div class="cert-name">วิทยากรสอนการเขียนโปรแกรม</div>
-                        <div class="cert-issuer">โครงการ Code for Thailand</div>
-                        <div class="cert-date">2022 - ปัจจุบัน</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">เขียนบทความเทคนิค</div>
-                        <div class="cert-issuer">Medium & Dev.to</div>
-                        <div class="cert-date">มีผู้อ่านกว่า 50,000 คน</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Open Source Contributor</div>
-                        <div class="cert-issuer">GitHub</div>
-                        <div class="cert-date">500+ contributions ในปี 2023</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">Tech Mentor</div>
-                        <div class="cert-issuer">Thai Programmer Association</div>
-                        <div class="cert-date">2021 - ปัจจุบัน</div>
-                    </div>
-                </section>
-
                 <section class="section">
                     <h2 class="section-title">ความสนใจ</h2>
                     <div class="interests">
                         <span class="interest-item">🤖 AI & Machine Learning</span>
-                        <span class="interest-item">🎮 Game Development</span>
-                        <span class="interest-item">📱 Mobile Apps</span>
-                        <span class="interest-item">🏃‍♂️ วิ่งมาราธอน</span>
-                        <span class="interest-item">📚 อ่านหนังสือ</span>
+                        <span class="interest-item">🎮 Game</span>
                         <span class="interest-item">🎸 เล่นกีต้าร์</span>
-                        <span class="interest-item">📷 ถ่ายภาพ</span>
-                        <span class="interest-item">🌱 ปลูกต้นไม้</span>
-                        <span class="interest-item">🎯 Archery</span>
-                        <span class="interest-item">🧩 แก้ปัญหา Algorithm</span>
-                        <span class="interest-item">🚀 Space Technology</span>
-                        <span class="interest-item">🎨 Digital Art</span>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h2 class="section-title">เป้าหมายระยะสั้น</h2>
-                    <div class="cert-item">
-                        <div class="cert-name">เรียนรู้ Machine Learning</div>
-                        <div class="cert-issuer">เพื่อนำมาประยุกต์ใช้ในงาน</div>
-                        <div class="cert-date">2024</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">พัฒนา Mobile App</div>
-                        <div class="cert-issuer">สำหรับธุรกิจส่วนตัว</div>
-                        <div class="cert-date">กลางปี 2024</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-name">เรียนรู้ Kubernetes</div>
-                        <div class="cert-issuer">สำหรับ Container Orchestration</div>
-                        <div class="cert-date">ไตรมาส 2/2024</div>
                     </div>
                 </section>
 
@@ -855,8 +834,9 @@
         document.querySelectorAll('.contact-item').forEach(item => {
             item.addEventListener('click', function() {
                 const text = this.textContent.trim();
-                if (text.includes('@') || text.includes('+66') || text.includes('www.') || text.includes('.com')) {
-                    navigator.clipboard.writeText(text.split(' ').pop()).then(() => {
+                if (text.includes('@') || text.includes('094') || text.includes('Facebook') || text.includes('Line')) {
+                    const copyText = text.split(': ')[1] || text.split(' ').pop();
+                    navigator.clipboard.writeText(copyText).then(() => {
                         // Visual feedback
                         const original = this.style.background;
                         this.style.background = 'rgba(72, 187, 120, 0.2)';
