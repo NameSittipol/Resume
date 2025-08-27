@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - สิทธิพล ทองอิ่ม</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -502,8 +503,6 @@
             
             .header {
                 background: #667eea !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
             }
             
             .section {
@@ -519,6 +518,11 @@
 </head>
 <body>
     <div class="container">
+        <!-- Modal สำหรับแสดงภาพใหญ่ -->
+        <div id="image-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;">
+            <span id="close-modal" style="position:absolute;top:32px;right:48px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;">&times;</span>
+            <img id="modal-img" src="" alt="" style="max-width:90vw;max-height:80vh;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.3);background:#fff;" />
+        </div>
         <header class="header">
             <div class="header-content">
                 <div class="profile-section">
@@ -602,7 +606,7 @@
                         </div>
                     </div>
                     <p class="summary">
-                        มีแฟนชื่อน้ำตาลครับ❤️ จุ๊บๆ❤️❤️ แฟนน่ารักมากครับ❤️❤️❤️ แฟนชอบแฟรงฟันและนอนเป็นชีวิตจิตใจ
+                        ข้อมูลเพิ่มเติม ยังไม่ได้เพิ่ม 555
                     </p>
                 </section>
 
@@ -612,7 +616,7 @@
                     <div class="experience-item">
                         <div class="item-header">
                             <div>
-                                <div class="item-title">พนักงานคีย์ข้อมูล</div>
+                                <div class="item-title">พนักงานบันทึกข้อมูล</div>
                                 <div class="item-company">โรงพยาบาลส่งเสริมสุขภาพตำบลนาอิน</div>
                                 <div class="item-location">อุตรดิตถ์</div>
                             </div>
@@ -670,17 +674,132 @@
                             </div>
                             <div class="item-duration">2025</div>
                         </div>
+                        <div class="project-images">
+                            <img src="image/NSSD/1.png" alt="NSSD Project 1" class="project-image" />
+                            <img src="image/NSSD/2.png" alt="NSSD Project 2" class="project-image" />
+                        </div>
                         <p class="item-description">
                             พัฒนาเว็บพลิเคชันสำหรับ อสม. เพื่อบันทึกข้อมูลการสำรวจลูกน้ำยุงลายภายในหมู่บ้าน มีฟีเจอร์บันทึกข้อมูลการสำรวจ, Dashboard
                         </p>
                         <ul class="achievements">
-                            <li>ใช้ HTML, Java, CSS สำหรับพัฒนาเว็บแอปพลิเคชัน</li>
-                            <li>ใช้ Google Sheet เป็นฐานข้อมูล</li>
+                            <li>Database : Google Sheet</li>
                         </ul>
                         <div class="tech-stack">
                             <span class="tech-item">HTML</span>
                             <span class="tech-item">CSS</span>
                             <span class="tech-item">Java</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">JHCIS FLEXVIEW</div>
+                            </div>
+                            <div class="item-duration">2025</div>
+                        </div>
+                        <div class="project-images">
+                            <img src="image/Flexview/1.png" alt="JHCIS FLEXVIEW 1" class="project-image" />
+                            <img src="image/Flexview/2.png" alt="JHCIS FLEXVIEW 2" class="project-image" />
+                        </div>
+                        <p class="item-description">
+                            โปรแกรมสำหรับดูข้อมูลผู้ป่วย NCD ของโรงพยาบาลส่งเสริมสุขภาพตำบลนาอิน เน้นการแสดงผลข้อมูลผู้รับบริการรายวัน, รายชื่อผู้ป่วย NCD, สถิติและรายละเอียดต่างๆ และ Export เป็นไฟล์ Excel ได้
+                        </p>
+                        <ul class="achievements">
+                            <li>Frontend : HTML, JavaScript, TailwindCSS, SweetAlert2, Canvas</li>
+                            <li>Backend : JavaScript(Node.js), Electron, MySQL npm package</li>
+                            <li>Database : MySQL</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-item">JavaScript</span>
+                            <span class="tech-item">HTML</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">โปรแกรมคิวรี่ข้อมูลจาก ICD10</div>
+                            </div>
+                            <div class="item-duration">2025</div>
+                        </div>
+                        <div class="project-images">
+                            <img src="image/โปรแกรมคิวรี่ข้อมูลจาก ICD10/1.png" alt="โปรแกรมคิวรี่ข้อมูลจาก ICD10 1" class="project-image" />
+                        </div>
+                        <p class="item-description">
+                            โปรแกรมสำหรับดูรายผู้เข้ารับบริการจาก ICD10 นั้นๆ โดยการสร้างโค้ด SQL และรันโค้ดเพื่อแสดงผล และสามารถ Export เป็นไฟล์ Excel ได้
+                        </p>
+                        <ul class="achievements">
+                            <li>Frontend : Tkinter</li>
+                            <li>Backend : Python</li>
+                            <li>Database : MySQL</li>
+                        </ul>
+                        <p class="item-school">
+                            library
+                        </p>
+                        <ul class="achievements">
+                            <li>tkinter</li>
+                            <li>tkcalendar</li>
+                            <li>sqlalchemy</li>
+                            <li>pandas</li>
+                            <li>threading</li>
+                            <li>datetime</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-item">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">เว็บแอพพลิเคชั่นสำหรับแจ้งเตือน</div>
+                            </div>
+                            <div class="item-duration">2025</div>
+                        </div>
+                        <div class="project-images">
+                            <img src="image/เว็บแอพพลิเคชั่นสำหรับแจ้งเตือน/1.png" alt="เว็บแอพพลิเคชั่นสำหรับแจ้งเตือน 1" class="project-image" />
+                            <img src="image/เว็บแอพพลิเคชั่นสำหรับแจ้งเตือน/2.png" alt="เว็บแอพพลิเคชั่นสำหรับแจ้งเตือน 2" class="project-image" />
+                        </div>
+                        <p class="item-description">
+                            เป็นเว็บแอพสำหรับแจ้งเตือนระหว่างผู้เรียกและผู้รับแบบเรียลไทม์
+                        </p>
+                        <p class="item-school">
+                            library
+                        </p>
+                        <ul class="achievements">
+                            <li>express</li>
+                            <li>socket.io</li>
+                            <li>nodemon</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-item">HTML</span>
+                            <span class="tech-item">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์</div>
+                            </div>
+                            <div class="item-duration">2025</div>
+                        </div>
+                        <div class="project-images">
+                            <img src="image/เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์/1.png" alt="เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์ 1" class="project-image" />
+                            <img src="image/เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์/2.png" alt="เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์ 2" class="project-image" />
+                            <img src="image/เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์/3.png" alt="เว็บแอพพลิเคชั่นสำหรับบันทึกการยืมคืนอุปกรณ์ 3" class="project-image" />
+                        </div>
+                        <p class="item-description">
+                            เป็นเว็บแอพสำหรับบันทึกการยืมคืนอุปกรณ์ที่สามารถบันทึกผู้ยืมและผู้คืนได้ และแสดงประวัติการยืมคืน, จำนวนอุปกรณ์ทั้งหมด
+                        </p>
+                        <ul class="achievements">
+                            <li>Database : Google Sheet</li>
+                            <li>รันบน Google Sheet appscript</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-item">HTML</span>
+                            <span class="tech-item">JavaScript</span>
                         </div>
                     </div>
                 </section>
@@ -773,6 +892,7 @@
                 <section class="section">
                     <h2 class="section-title">ความสนใจ</h2>
                     <div class="interests">
+                        <span class="interest-item">🤖 Automation</span>
                         <span class="interest-item">🤖 AI & Machine Learning</span>
                         <span class="interest-item">🎮 Game</span>
                         <span class="interest-item">🎸 เล่นกีต้าร์</span>
@@ -789,6 +909,30 @@
     </div>
 
     <script>
+        // Modal แสดงภาพใหญ่เมื่อคลิกที่รูป
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('image-modal');
+            var modalImg = document.getElementById('modal-img');
+            var closeBtn = document.getElementById('close-modal');
+            document.querySelectorAll('.project-image').forEach(function(img) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                });
+            });
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            });
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                }
+            });
+        });
         // Smooth scroll effect for better UX
         document.addEventListener('DOMContentLoaded', function() {
             // Add subtle animations on load
